@@ -10,14 +10,12 @@ const chainMaker = {
     return this.chain.length;
   },
   addLink(value) {
-    if(value === undefined) {
-      value = ''
-    }
-    this.chain.push(`( ${value} )`)
-    return this
+    this.chain.push(`( ${value} )`);
+    return this;
   },
   removeLink(position) {
-    if ((!(typeof position == 'number')) || (isNaN(position)) || (position < 1) || (position > this.getLength())) {
+    if (position < 1 || position > this.chain.length || typeof position !== 'number') {
+      this.chain = []
       throw new Error('You can\'t remove incorrect link!')
       }else{
     this.chain.splice(position-1, 1)
